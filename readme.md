@@ -41,3 +41,18 @@ Database migration.
 # migrate database
 python manage.py migrate
 ```
+
+Django administration.
+
+```bash
+# create super user
+python manage.py createsuperuser
+Username (leave blank to use 'alo-mohamadirfanislami'): cfe
+Email address: 
+Password: secretpassword
+Password (again): secretpassword
+Superuser created successfully.
+```
+
+Login to Administration Page on URL : `http://127.0.0.1:8000/admin/login/?next=/admin/`
+
