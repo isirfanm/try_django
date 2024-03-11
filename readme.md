@@ -21,7 +21,7 @@ pyenv local django
 Install Django package.
 
 ```bash
-pip install django==2.0.7
+pip install Django==2.0.7
 ```
 
 Create blank django project.
