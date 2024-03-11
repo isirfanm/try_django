@@ -73,7 +73,7 @@ python manage.py startapp products
 
 Add app to the Django project.
 
-```
+```python
 # try_django/settings.py
 
 INSTALLED_APPS = [
@@ -93,7 +93,7 @@ INSTALLED_APPS = [
 
 App Models.
 
-```
+```python
 # products/models.py
 from django.db import models
 
@@ -108,7 +108,7 @@ class Product(models.Model):
 
 Register app models to administration.
 
-```
+```python
 # products/admin.py
 from django.contrib import admin
 
