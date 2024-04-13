@@ -17,6 +17,12 @@ def render_initial_data(request):
     return render(request, "products/product_create.html", context)
 
 
+def dynamic_lookup_view(request, id):
+    product = Product.objects.get(id=id)
+    context = {"product": product}
+    return render(request, "products/product_detail.html", context)
+
+
 # def product_create_view(request: HttpRequest):
 #     my_form = RawProductForm()
 #     if request.method == "POST":
