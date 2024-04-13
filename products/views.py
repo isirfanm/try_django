@@ -1,5 +1,5 @@
 from django.http import HttpRequest, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Product
 from .forms import ProductForm, RawProductForm
@@ -20,12 +20,22 @@ def render_initial_data(request):
 def dynamic_lookup_view(request, id):
     # product = Product.objects.get(id=id)
     # product = get_object_or_404(Product, id=id)
-    try: 
+    try:
         product = Product.objects.get(id=id)
     except Product.DoesNotExist:
         raise Http404
     context = {"product": product}
     return render(request, "products/product_detail.html", context)
+
+
+def product_delete_view(request, id):
+    product = get_object_or_404(Product, id=id)
+    if request.method == "POST":
+        # confirming delete
+        product.delete()
+        return redirect("../../")
+    context = {"product": product}
+    return render(request, "products/product_delete.html", context)
 
 
 # def product_create_view(request: HttpRequest):
@@ -65,7 +75,7 @@ def product_create_view(request: HttpRequest):
 
 
 def product_detail_view(request):
-    product = Product.objects.get(id=1)
+    product = Product.objects.first()
     # context = {"title": product.title, "description": product.description}
     context = {"product": product}
     return render(request, "products/product_detail.html", context)
