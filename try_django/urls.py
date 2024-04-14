@@ -26,6 +26,8 @@ urlpatterns = [
     path("social/", social_view),
     # product
     path("products/", include("products.urls")),
+    # blog
+    path("blog/", include("blog.urls")),
     # admin
     path("admin/", admin.site.urls),
 ]
