@@ -1,11 +1,26 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import View
 from .models import Course
+from .forms import CourseModelForm
 
 # Create your views here.
 
 
 # Based View Class = View
+class CourseCreateView(View):
+    template_name = "courses/course_create.html"
+
+    def get(self, request, *args, **kwargs):
+        form = CourseModelForm()
+        context = {"form": form}
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = CourseModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+        context = {"form": form}
+        return render(request, self.template_name, context)
 
 
 class CourseListView(View):
@@ -33,8 +48,8 @@ class CourseView(View):
         return render(request, self.template_name, context)
 
     # post method for POST request
-    def post(self, request, *args, **kwargs):
-        return render(request, "courses/about.html", {})
+    # def post(self, request, *args, **kwargs):
+    #     return render(request, "courses/about.html", {})
 
 
 # HTTP methods
