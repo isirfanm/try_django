@@ -6,6 +6,21 @@ from .models import Course
 
 
 # Based View Class = View
+
+
+class CourseListView(View):
+    template_name = "courses/course_list.html"
+    queryset = Course.objects.all()
+
+    def get_queryset(self):
+        return self.queryset
+
+    # get method for GET request
+    def get(self, request, *args, **kwargs):
+        context = {"object_list": self.get_queryset()}
+        return render(request, self.template_name, context)
+
+
 class CourseView(View):
     template_name = "courses/course_detail.html"
 
