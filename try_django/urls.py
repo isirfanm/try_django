@@ -28,6 +28,8 @@ urlpatterns = [
     path("products/", include("products.urls")),
     # blog
     path("blog/", include("blog.urls")),
+    # courses
+    path("courses/", include("courses.urls")),
     # admin
     path("admin/", admin.site.urls),
 ]
