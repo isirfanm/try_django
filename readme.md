@@ -2,7 +2,7 @@
 
 ## How to
 
-Setup python environment with `pyenv`. 
+### Setup python environment with `pyenv`
 
 ```bash
 # install python
@@ -18,7 +18,7 @@ pyenv activate django
 pyenv local django
 ```
 
-Install Django package.
+### Install Django package
 
 ```bash
 pip install Django==2.0.7
@@ -34,14 +34,14 @@ django-admin startproject try_django
 cd try_django
 ```
 
-Run development server
+### Run development server
 
 ```bash
 # run development server
 python manage.py runserver
 ```
 
-Database migration.
+### Database migration
 
 ```bash
 # migrate database
@@ -56,7 +56,7 @@ Migrations for 'products':
 
 ```
 
-Django administration.
+### Django administration
 
 ```bash
 # create super user
@@ -68,16 +68,18 @@ Password (again): secretpassword
 Superuser created successfully.
 ```
 
-Login to Administration Page on URL : `http://127.0.0.1:8000/admin/login/?next=/admin/`
+### Login to Administration Page 
 
-Django Apps.
+URL : `http://127.0.0.1:8000/admin`
+
+### Django Apps
 
 ```bash
 # create new app
 python manage.py startapp products
 ```
 
-Add app to the Django project.
+### Add app to the Django project
 
 ```python
 # try_django/settings.py
@@ -97,7 +99,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-App Models.
+### App Models
 
 ```python
 # products/models.py
@@ -112,7 +114,7 @@ class Product(models.Model):
 
 ```
 
-Register app models to administration.
+### Register app models to administration
 
 ```python
 # products/admin.py
@@ -125,7 +127,7 @@ admin.site.register(Product)
 
 ```
 
-Django python shell.
+### Django python shell
 
 ```bash
 python manage.py shell
@@ -148,4 +150,27 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> obj.title
 'Product 1'
 
+```
+
+### Default Django Context Variable Names for View
+
+```python
+# Single object
+context = {
+    "object" : object
+}
+```
+
+```python
+# List of object
+context = {
+    "object_list" : object_list
+}
+```
+
+```python
+# Form object
+context = {
+    "form" : form
+}
 ```
